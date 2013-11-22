@@ -179,11 +179,12 @@ class Backend(PeriodicImportBackend):
     def do_periodic_import(self, ):
         #print "Importing ..."
         tasks = self.fetch_tasks_from_server()
-        self.process_tasks(tasks)
+        (added, updated, deleted)=self.process_tasks(tasks)
         #tags = self.fetch_tags_from_server()
         #self.process_tags(tags)
         self.save_state()
-        pynotify.Notification("Sync Done", "Added: 5 tasks\nUpdated: 9 tasks\nDeleted: 2 tasks\n(^^This isn't real, just a representation)", "dialog-info").show()
+        if added > 0 or updated > 0 or deleted > 0:
+        	pynotify.Notification("Sync Done", "Added: %d tasks\nUpdated: %d tasks\nDeleted: %d tasks\n" % (added, updated, deleted), "dialog-info").show()
         
     def save_state(self):
         '''Saves the state of the synchronization'''
@@ -298,6 +299,7 @@ class Backend(PeriodicImportBackend):
         #print "Local delete = " + str(local_delete)
         
         self.save_state()
+	return (len(remote_add),len(update),len(local_delete))
     
     def modify_tasks_for_gtgonline(self, task_list):
         """

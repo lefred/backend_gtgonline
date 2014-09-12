@@ -60,7 +60,7 @@ class Backend(PeriodicImportBackend):
     _general_description = {
         GenericBackend.BACKEND_NAME: "backend_gtgonline",
         GenericBackend.BACKEND_HUMAN_NAME: _("GTGOnline!"),
-        GenericBackend.BACKEND_AUTHORS: ["Parin Porecha"],
+        GenericBackend.BACKEND_AUTHORS: ["Parin Porecha", "Frédéric Descamps"],
         GenericBackend.BACKEND_TYPE: GenericBackend.TYPE_READWRITE,
         GenericBackend.BACKEND_DESCRIPTION:
         _("This service synchronizes your tasks with Getting Things Gnome's"

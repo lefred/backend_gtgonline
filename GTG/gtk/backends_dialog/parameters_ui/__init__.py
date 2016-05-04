@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------------
 # Getting Things GNOME! - a personal organizer for the GNOME desktop
-# Copyright (c) 2008-2012 - Lionel Dricot & Bertrand Rousseau
+# Copyright (c) 2008-2013 - Lionel Dricot & Bertrand Rousseau
 #
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -100,6 +100,18 @@ class ParametersUI(gtk.VBox):
                 "text": _("Tag your GTG tasks with the project "
                      "targeted by the bug"),
                 "parameter": "tag-with-project-name",
+            })),
+            ("api_key", self.UI_generator(TextUI, {
+                "description": _("API KEY"),
+                "parameter_name": "api_key",
+            })),
+            ("oauth_token", self.UI_generator(TextUI, {
+                "description": _("OAuth Token"),
+                "parameter_name": "oauth_token",
+            })),
+            ("board_id", self.UI_generator(TextUI, {
+                "description": _("Board ID"),
+                "parameter_name": "board_id",
             })),
         )
 
